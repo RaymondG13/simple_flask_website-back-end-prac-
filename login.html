@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartEdge TECH | Login</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .auth-wrapper {
+            min-height: calc(100vh - 62px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 5%;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 36px 32px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .auth-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .auth-form { display: none; flex-direction: column; gap: 14px; }
+        .auth-form.active { display: flex; }
+
+        .auth-form label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .auth-form input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(46,184,194,0.07);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            border: none;
+            border-radius: 7px;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: opacity 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .auth-btn:hover { opacity: 0.85; }
+
+        .auth-message {
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 4px;
+            min-height: 18px;
+        }
+
+        .auth-message.success { color: var(--accent); }
+        .auth-message.error { color: #c06060; }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #c0c0c0;
+        }
+
+        .auth-logo span { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <a href="hompage.html">SmartEdge <span>TECH</span></a>
+        </div>
+        <nav class="header-nav">
+            <a href="hompage.html">Home</a>
+            <a href="audio.html">Audio</a>
+            <a href="laptops.html">Laptops</a>
+            <a href="smartphones.html">Smartphones</a>
+            <a href="accessories.html">Accessories</a>
+            <a href="about.html">About</a>
+            <a href="cart.html">Cart <span class="cart-count">0</span></a>
+        </nav>
+    </header>
+
+    <div class="auth-wrapper">
+        <div class="auth-box">
+
+            <div class="auth-logo">SmartEdge <span>TECH</span></div>
+
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="loginTab" onclick="switchTab('login')">Login</div>
+                <div class="auth-tab" id="registerTab" onclick="switchTab('register')">Register</div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="auth-form active" id="loginForm">
+                <div>
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••">
+                </div>
+                <button class="auth-btn" onclick="handleLogin()">Login</button>
+                <p class="auth-message" id="loginMsg"></p>
+            </div>
+
+            <!-- Register Form -->
+            <div class="auth-form" id="registerForm">
+                <div>
+                    <label>Full Name</label>
+                    <input type="text" id="regName" placeholder="Kenneth Muchui">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" id="regEmail" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" id="regPassword" placeholder="••••••••">
+                </div>
+                <button class="auth-btn" onclick="handleRegister()">Create Account</button>
+                <p class="auth-message" id="registerMsg"></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="nav.js"></script>
+    <script>
+        const API = 'http://127.0.0.1:5000/api';
+
+        function switchTab(tab) {
+            document.getElementById('loginForm').classList.toggle('active', tab === 'login');
+            document.getElementById('registerForm').classList.toggle('active', tab === 'register');
+            document.getElementById('loginTab').classList.toggle('active', tab === 'login');
+            document.getElementById('registerTab').classList.toggle('active', tab === 'register');
+        }
+
+        async function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            const msg = document.getElementById('loginMsg');
+
+            if (!email || !password) {
+                msg.className = 'auth-message error';
+                msg.textContent = 'Please fill in all fields';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    sessionStorage.setItem('token', data.token);
+                    sessionStorage.setItem('userName', data.name);
+                    msg.className = 'auth-message success';
+                    msg.textContent = `Welcome back, ${data.name}!`;
+                    setTimeout(() => { window.location.href = 'hompage.html'; }, 1000);
+                } else {
+                    msg.className = 'auth-message error';
+                    msg.textContent = data.error || 'Login failed';
+                }
+            } catch {
+                msg.className = 'auth-message error';
+                msg.textContent = 'Could not connect to server';
+            }
+        }
+
+        async function handleRegister() {
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+            const msg = document.getElementById('registerMsg');
+
+            if (!name || !email || !password) {
+                msg.className = 'auth-message error';
+                msg.textContent = 'Please fill in all fields';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    msg.className = 'auth-message success';
+                    msg.textContent = 'Account created! Switching to login...';
+                    setTimeout(() => { switchTab('login'); }, 1500);
+                } else {
+                    msg.className = 'auth-message error';
+                    msg.textContent = data.error || 'Registration failed';
+                }
+            } catch {
+                msg.className = 'auth-message error';
+                msg.textContent = 'Could not connect to server';
+            }
+        }
+    </script>
+
+</body>
+</html>
