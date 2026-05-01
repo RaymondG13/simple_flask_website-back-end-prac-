@@ -16,15 +16,17 @@
             <input type="text" placeholder="Search laptops...">
             <button type="submit" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
         </form>
-        <nav class="header-nav">
-            <a href="hompage.html">Home</a>
-            <a href="audio.html">Audio</a>
-            <a href="laptops.html">Laptops</a>
-            <a href="smartphones.html">Smartphones</a>
-            <a href="accessories.html">Accessories</a>
-            <a href="about.html">About</a>
-            <a href="cart.html">Cart <span class="cart-count">0</span></a>
-        </nav>
+     <nav class="header-nav">
+    <a href="hompage.html">Home</a>
+    <a href="audio.html">Audio</a>
+    <a href="laptops.html">Laptops</a>
+    <a href="smartphones.html">Smartphones</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="about.html">About</a>
+    <a href="cart.html">Cart <span class="cart-count">0</span></a>
+    <a href="login.html" class="nav-login">Login</a>
+    <a href="#" class="nav-logout" onclick="logout()" style="display:none">Logout</a>
+</nav>
     </header>
 
     
@@ -97,7 +99,7 @@
             <div class="product-grid">
 
                 
-                <div class="card">
+                <div class="card" data-product-id="10">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80" alt="MacBook Pro">
                     </div>
@@ -114,7 +116,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="11">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=500&q=80" alt="Dell XPS 15">
                     </div>
@@ -131,7 +133,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="12">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="ASUS ROG Strix">
                     </div>
@@ -148,7 +150,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="13">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=500&q=80" alt="Lenovo ThinkPad X1 Carbon">
                     </div>
@@ -165,7 +167,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="14">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80" alt="HP Spectre x360">
                     </div>
@@ -182,7 +184,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="15">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=500&q=80" alt="MacBook Air M3">
                     </div>
@@ -199,7 +201,7 @@
                 </div>
 
                 
-                <div class="card">
+               <div class="card" data-product-id="16">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?auto=format&fit=crop&w=500&q=80" alt="Acer Nitro V">
                     </div>
@@ -216,7 +218,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="17">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1611186871525-7ea7ab1ec1f7?auto=format&fit=crop&w=500&q=80" alt="Microsoft Surface Laptop 6">
                     </div>
@@ -233,7 +235,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="18">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=500&q=80" alt="HP 255 G10">
                     </div>

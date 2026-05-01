@@ -118,17 +118,19 @@
 
     <header class="main-header">
         <div class="logo">
-            <a href="hompage.html">SmartEdge <span>TECH</span></a>
+            <a href="homepage.html">SmartEdge <span>TECH</span></a>
         </div>
         <nav class="header-nav">
-            <a href="hompage.html">Home</a>
-            <a href="audio.html">Audio</a>
-            <a href="laptops.html">Laptops</a>
-            <a href="smartphones.html">Smartphones</a>
-            <a href="accessories.html">Accessories</a>
-            <a href="about.html">About</a>
-            <a href="cart.html">Cart <span class="cart-count">0</span></a>
-        </nav>
+    <a href="homepage.html">Home</a>
+    <a href="audio.html">Audio</a>
+    <a href="laptops.html">Laptops</a>
+    <a href="smartphones.html">Smartphones</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="about.html">About</a>
+    <a href="cart.html">Cart <span class="cart-count">0</span></a>
+    <a href="login.html" class="nav-login">Login</a>
+    <a href="#" class="nav-logout" onclick="logout()" style="display:none">Logout</a>
+</nav>
     </header>
 
     <div class="auth-wrapper">
@@ -137,8 +139,8 @@
             <div class="auth-logo">SmartEdge <span>TECH</span></div>
 
             <div class="auth-tabs">
-                <div class="auth-tab active" id="loginTab" onclick="switchTab('login')">Login</div>
-                <div class="auth-tab" id="registerTab" onclick="switchTab('register')">Register</div>
+                <div class="auth-tab active" id="loginTab">Login</div>
+<div class="auth-tab" id="registerTab">Register</div>
             </div>
 
             <!-- Login Form -->
@@ -151,7 +153,7 @@
                     <label>Password</label>
                     <input type="password" id="loginPassword" placeholder="••••••••">
                 </div>
-                <button class="auth-btn" onclick="handleLogin()">Login</button>
+                <button class="auth-btn" id="loginBtn">Login</button>
                 <p class="auth-message" id="loginMsg"></p>
             </div>
 
@@ -169,7 +171,7 @@
                     <label>Password</label>
                     <input type="password" id="regPassword" placeholder="••••••••">
                 </div>
-                <button class="auth-btn" onclick="handleRegister()">Create Account</button>
+                <button class="auth-btn" id="registerBtn">Create Account</button>
                 <p class="auth-message" id="registerMsg"></p>
             </div>
 
@@ -178,7 +180,7 @@
 
     <script src="nav.js"></script>
     <script>
-        const API = 'http://127.0.0.1:5000/api';
+
 
         function switchTab(tab) {
             document.getElementById('loginForm').classList.toggle('active', tab === 'login');
@@ -255,6 +257,10 @@
                 msg.textContent = 'Could not connect to server';
             }
         }
+        document.getElementById('loginBtn').addEventListener('click', handleLogin);
+document.getElementById('registerBtn').addEventListener('click', handleRegister);
+        document.getElementById('loginTab').addEventListener('click', () => switchTab('login'));
+document.getElementById('registerTab').addEventListener('click', () => switchTab('register'));
     </script>
 
 </body>

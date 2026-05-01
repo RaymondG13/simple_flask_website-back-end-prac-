@@ -16,15 +16,17 @@
             <input type="text" placeholder="Search audio products...">
             <button type="submit" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
         </form>
-        <nav class="header-nav">
-            <a href="hompage.html">Home</a>
-            <a href="audio.html">Audio</a>
-            <a href="laptops.html">Laptops</a>
-            <a href="smartphones.html">Smartphones</a>
-            <a href="accessories.html">Accessories</a>
-            <a href="about.html">About</a>
-            <a href="cart.html">Cart <span class="cart-count">0</span></a>
-        </nav>
+      <nav class="header-nav">
+    <a href="hompage.html">Home</a>
+    <a href="audio.html">Audio</a>
+    <a href="laptops.html">Laptops</a>
+    <a href="smartphones.html">Smartphones</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="about.html">About</a>
+    <a href="cart.html">Cart <span class="cart-count">0</span></a>
+    <a href="login.html" class="nav-login">Login</a>
+    <a href="#" class="nav-logout" onclick="logout()" style="display:none">Logout</a>
+</nav>
     </header>
 
     
@@ -86,7 +88,7 @@
             <div class="product-grid">
 
                 
-                <div class="card">
+                <div class="card" data-product-id="1">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Sony WH-1000XM5">
                     </div>
@@ -103,7 +105,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="2">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500" alt="AirPods Pro">
                     </div>
@@ -120,7 +122,7 @@
                 </div>
 
                 
-                <div class="card">
+               <div class="card" data-product-id="3">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500" alt="JBL Xtreme 3">
                     </div>
@@ -137,7 +139,7 @@
                 </div>
 
                 
-                <div class="card">
+               <div class="card" data-product-id="4">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500" alt="Bose QC45">
                     </div>
@@ -154,7 +156,8 @@
                 </div>
 
                 
-                <div class="card">
+
+                 <div class="card" data-product-id="5">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500" alt="Sennheiser HD 560S">
                     </div>
@@ -171,7 +174,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="6">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1520170350707-b2da59970118?w=500" alt="Audio-Technica AT2020">
                     </div>
@@ -188,7 +191,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="7">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1631176093617-6f2a2d72b222?w=500" alt="Samsung Galaxy Buds3 Pro">
                     </div>
@@ -205,7 +208,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="8">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500" alt="Bose SoundLink Flex">
                     </div>
@@ -222,7 +225,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="9">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500" alt="Samsung Soundbar">
                     </div>

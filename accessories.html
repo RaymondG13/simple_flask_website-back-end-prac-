@@ -17,14 +17,16 @@
             <button type="submit" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
         </form>
         <nav class="header-nav">
-            <a href="hompage.html">Home</a>
-            <a href="audio.html">Audio</a>
-            <a href="laptops.html">Laptops</a>
-            <a href="smartphones.html">Smartphones</a>
-            <a href="accessories.html">Accessories</a>
-            <a href="about.html">About</a>
-            <a href="cart.html">Cart <span class="cart-count">0</span></a>
-        </nav>
+    <a href="hompage.html">Home</a>
+    <a href="audio.html">Audio</a>
+    <a href="laptops.html">Laptops</a>
+    <a href="smartphones.html">Smartphones</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="about.html">About</a>
+    <a href="cart.html">Cart <span class="cart-count">0</span></a>
+    <a href="login.html" class="nav-login">Login</a>
+    <a href="#" class="nav-logout" onclick="logout()" style="display:none">Logout</a>
+</nav>
     </header>
 
     
@@ -100,7 +102,7 @@
             <div class="product-grid">
 
                 
-                <div class="card">
+                <div class="card" data-product-id="28">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="Logitech MX Keys S">
                     </div>
@@ -117,7 +119,7 @@
                 </div>
 
                 
-                <div class="card">
+               <div class="card" data-product-id="29">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=500&q=80" alt="Logitech MX Master 3S">
                     </div>
@@ -134,7 +136,8 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="30">
+
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1623126908029-58cb08a2b272?auto=format&fit=crop&w=500&q=80" alt="Anker 733 Power Bank">
                     </div>
@@ -151,7 +154,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="31">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1586210579191-33b45e38fa2c?auto=format&fit=crop&w=500&q=80" alt="Razer DeathAdder V3">
                     </div>
@@ -168,7 +171,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="32">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80" alt="Apple MagSafe Charger">
                     </div>
@@ -185,7 +188,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="33">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=500&q=80" alt="Laptop Bag">
                     </div>
@@ -202,7 +205,7 @@
                 </div>
 
                 
-                <div class="card">
+               <div class="card" data-product-id="34">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1615750173854-f95a534b4e22?auto=format&fit=crop&w=500&q=80" alt="Baseus 65W GaN Charger">
                     </div>
@@ -219,7 +222,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="35">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1596558450268-9c27524ba856?auto=format&fit=crop&w=500&q=80" alt="Logitech C920 Webcam">
                     </div>
@@ -236,7 +239,7 @@
                 </div>
 
                 
-                <div class="card">
+                <div class="card" data-product-id="36">
                     <div class="card-img-wrap">
                         <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" alt="Samsung Clear Case">
                     </div>
