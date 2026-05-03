@@ -9,4 +9,6 @@ class Config:
         'mysql+pymysql://root:@localhost/smartedge'
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)gi
+
+
+JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
