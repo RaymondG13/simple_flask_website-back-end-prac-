@@ -1,4 +1,4 @@
-const API = 'http://127.0.0.1:5000/api';
+const API = 'https://web-production-1af7c.up.railway.app/api';
 
 const pages = {
   home: 'hompage.html',
