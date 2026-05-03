@@ -243,8 +243,8 @@
                     <span>Total</span>
                     <span id="totalAmt">—</span>
                 </div>
-                <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
-                <button class="clear-btn" id="clearBtn">Clear Cart</button>
+               <button class="checkout-btn" id="checkoutBtn" type="button">Proceed to Checkout</button>
+              <button class="clear-btn" id="clearBtn" type="button">Clear Cart</button>
             </div>
         </div>
     </div>
@@ -361,7 +361,9 @@ document.getElementById('clearBtn').addEventListener('click', async () => {
     fetchCart();
 });
 
-document.getElementById('checkoutBtn').addEventListener('click', async () => {
+document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
+    e.preventDefault();
+    console.log('checkout clicked');
     if (!isLoggedIn()) {
         window.location.href = 'login.html';
         return;
@@ -395,7 +397,7 @@ document.getElementById('checkoutBtn').addEventListener('click', async () => {
     }
 });
 
-window.addEventListener('load', fetchCart);
+setTimeout(fetchCart, 300);
 
     </script>
 
