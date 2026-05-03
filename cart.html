@@ -250,10 +250,10 @@
     </div>
 
     <div id="toast"></div>
+        <script src="nav.js"></script>
 
     <script>
-        const API = 'http://127.0.0.1:5000/api';
-const DELIVERY = 300;
+       const DELIVERY = 300;
 
 function getToken() { return sessionStorage.getItem('token'); }
 function isLoggedIn() { return !!getToken(); }
@@ -351,14 +351,51 @@ function renderCart(items) {
 }
 
 document.getElementById('clearBtn').addEventListener('click', async () => {
-    toast('Clear cart coming soon');
+    if (!isLoggedIn()) return;
+    await fetch(`${API}/cart/clear`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${getToken()}` }
+    });
+    sessionStorage.removeItem('cart');
+    toast('Cart cleared');
+    fetchCart();
 });
 
-document.getElementById('checkoutBtn').addEventListener('click', () => {
-    toast('Checkout coming soon');
+document.getElementById('checkoutBtn').addEventListener('click', async () => {
+    if (!isLoggedIn()) {
+        window.location.href = 'login.html';
+        return;
+    }
+
+    const btn = document.getElementById('checkoutBtn');
+    btn.textContent = 'Placing order...';
+    btn.disabled = true;
+
+    try {
+        const res = await fetch(`${API}/cart/checkout`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${getToken()}` }
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            sessionStorage.removeItem('cart');
+            toast(`Order #${data.order_id} placed! Total: KES ${data.total.toLocaleString()}`);
+            setTimeout(() => { fetchCart(); }, 2500);
+        } else {
+            toast(data.error || 'Checkout failed');
+            btn.textContent = 'Proceed to Checkout';
+            btn.disabled = false;
+        }
+    } catch {
+        toast('Could not connect to server');
+        btn.textContent = 'Proceed to Checkout';
+        btn.disabled = false;
+    }
 });
 
-fetchCart();
+window.addEventListener('load', fetchCart);
 
     </script>
 
